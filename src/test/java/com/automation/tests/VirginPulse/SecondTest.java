@@ -41,14 +41,7 @@ public class SecondTest {
 
     }
 
-
-
-    //    @Test
-//    @DisplayName("Search for a category")
-//    public void searchCategory() {
-//        Response response= given().baseUri(BASE_URL).queryParam("category","dog").
-//                when().get("/pet/findByStatus").prettyPeek();
-//
-//    }
+    //for the second part of the task, we need to find similar pets,
+    // i though to use tags but this endpoint is deprecated.
 
 
