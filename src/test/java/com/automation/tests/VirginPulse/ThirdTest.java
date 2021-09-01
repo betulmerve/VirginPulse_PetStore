@@ -5,10 +5,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
-public class SecondTest {
+public class ThirdTest {
 
     public static void main(String[] args) throws Exception {
 
@@ -19,27 +21,26 @@ public class SecondTest {
 
         Thread.sleep(3000);
 
-        //how to collect all links from the page?
-        List<WebElement> links=driver.findElements(By.className("arrow"));
+        List<WebElement> arrows=driver.findElements(By.className("arrow"));
 
-//        for (WebElement link:links) {
-//            System.out.println(link.getText());
-//            System.out.println(link.getAttribute("href"));
-//            System.out.println();
-//
-//        }
 
-        //i am starting one because i want to skip the first one, it is home page link
-        for (int i = 1; i <links.size() ; i++) {
-            links.get(i).click();
-            Thread.sleep(1000);
-            links.get(i).click();
-            Thread.sleep(1000);
-            //Thread.sleep(2000);
-            //driver.navigate().back();
-            //Thread.sleep(2000);
-            //refresh list
-            links=driver.findElements(By.className("arrow"));
+        for (int i = 1; i <arrows.size() ; i++) {
+
+            if (arrows.get(i).isDisplayed() && arrows.get(i).isEnabled()) {
+                WebDriverWait wait=new WebDriverWait(driver,10);
+                WebElement element=wait.until(ExpectedConditions.elementToBeClickable(arrows.get(i)));
+                element.click();
+                Thread.sleep(1000);
+                arrows.get(i).click();
+                Thread.sleep(1000);
+                //refresh list
+                arrows=driver.findElements(By.className("arrow"));
+            }
+
+            else {
+                System.out.println("Element is not clickable");
+            }
+
         }
 
         driver.quit();
