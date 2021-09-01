@@ -8,12 +8,10 @@ import io.restassured.response.Response;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-
-import java.awt.*;
 import java.io.File;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.*;
+
 
 public class FirstTest {
 
@@ -53,8 +51,6 @@ public class FirstTest {
     @Test
     @DisplayName("Create a pet and add a picture")
     public void createAndAddPicToPet() {
-
-        File imageFile = new File("/Users/mervefaki/IdeaProjects/VirginPulse_PetStore/download.jpeg");
 
         String body="{\n" +
                 "  \"id\": 0,\n" +
